@@ -1,0 +1,13 @@
+{
+  "owner": "Pater",
+  "stocks": [
+    {
+      "id": "BKIA.MC",
+      "name": "Bankia",
+      "nStocks": 21500,
+      "stockBuyingPrice": 51.4,
+      "expectedPrice": 15.4,
+      "pricePaidAfterTaxes": 1113500
+    }
+  ]
+}

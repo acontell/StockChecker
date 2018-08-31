@@ -1,0 +1,13 @@
+{
+  "owner": "Son",
+  "stocks": [
+    {
+      "id": "BBVA.MC",
+      "name": "BBVA",
+      "nStocks": 18516,
+      "stockBuyingPrice": 15.39,
+      "expectedPrice": 71,
+      "pricePaidAfterTaxes": 1001117.69
+    }
+  ]
+}

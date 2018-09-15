@@ -8,8 +8,8 @@ import static services.PriceService.ERROR_AMOUNT;
 class StockWrapper {
     static final int MAXIMUM_RETRIES = 4;
     static final int DEFAULT_NUMBER_OF_FAILS = 0;
+    private final Stock stock;
     private int numberOfFails;
-    private Stock stock;
 
     StockWrapper(final Stock stock, final int numberOfFails) {
         this.stock = stock;

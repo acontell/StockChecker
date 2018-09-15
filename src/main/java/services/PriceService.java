@@ -8,8 +8,8 @@ import parsers.StockParser;
 import retrievers.StockRetriever;
 
 @Singleton
-class StockService {
-    private static final int MAX_RETRIES = 5;
+class PriceService {
+    private static final int MAX_RETRIES = 3;
     static final Amount ERROR_AMOUNT = Amount.ZERO;
 
     private final StockParser stockParser;
@@ -17,10 +17,10 @@ class StockService {
     int millisecondsBetweenTries;
 
     @Inject
-    StockService(final StockParser stockParser, final StockRetriever stockRetriever) {
+    PriceService(final StockParser stockParser, final StockRetriever stockRetriever) {
         this.stockParser = stockParser;
         this.stockRetriever = stockRetriever;
-        this.millisecondsBetweenTries = 1000;
+        this.millisecondsBetweenTries = 500;
     }
 
     Amount getLastClosingPrice(final Stock stock) {

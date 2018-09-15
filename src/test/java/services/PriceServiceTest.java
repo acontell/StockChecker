@@ -13,10 +13,10 @@ import static domain.Amount.of;
 import static fixtures.PortFolioFixture.STOCK;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
-import static services.StockService.ERROR_AMOUNT;
+import static services.PriceService.ERROR_AMOUNT;
 
 @RunWith(MockitoJUnitRunner.class)
-public class StockServiceTest {
+public class PriceServiceTest {
 
     private static final Amount CLOSING_PRICE = of(5.0);
 
@@ -25,24 +25,24 @@ public class StockServiceTest {
     @Mock
     private StockRetriever stockRetriever;
 
-    private StockService stockService;
+    private PriceService priceService;
 
     @Before
     public void setUp() {
         given(this.stockRetriever.getStockInfo(STOCK)).willReturn(null);
         given(this.stockParser.getClosingPrice(null)).willReturn(CLOSING_PRICE);
-        this.stockService = new StockService(this.stockParser, this.stockRetriever);
-        this.stockService.millisecondsBetweenTries = 1;
+        this.priceService = new PriceService(this.stockParser, this.stockRetriever);
+        this.priceService.millisecondsBetweenTries = 1;
     }
 
     @Test
     public void shouldReturnClosingPrice() {
-        assertThat(this.stockService.getLastClosingPrice(STOCK)).isEqualTo(CLOSING_PRICE);
+        assertThat(this.priceService.getLastClosingPrice(STOCK)).isEqualTo(CLOSING_PRICE);
     }
 
     @Test
     public void shouldReturnErrorAmount() {
         given(this.stockRetriever.getStockInfo(STOCK)).willThrow(new RuntimeException());
-        assertThat(this.stockService.getLastClosingPrice(STOCK)).isEqualTo(ERROR_AMOUNT);
+        assertThat(this.priceService.getLastClosingPrice(STOCK)).isEqualTo(ERROR_AMOUNT);
     }
 }
